@@ -1,0 +1,35 @@
+
+body{
+background:white url("Newspaper/images/HomePage.jpg");
+background-size: cover;
+}
+
+.navbar{
+border-radius:0;
+}
+
+.navbar-brand{
+font-family:'Satisfy',cursive
+}
+.act{
+font-family:'Satisfy',cursive
+}
+.NH{
+font-family:'Satisfy',cursive
+}
+
+.breakpoint-off .dropdown {
+    width: 180px;
+    position: absolute;
+    background-color: #fff;
+    top: 120%;
+    left: 0;
+    z-index: 100;
+    height: auto;
+    box-shadow: 0 1px 5px rgba(0,0,0,.1);
+    -webkit-transition-duration: .3s;
+    transition-duration: .3s;
+    opacity: 0;
+    visibility: hidden;
+    padding: 10px 0;
+    }

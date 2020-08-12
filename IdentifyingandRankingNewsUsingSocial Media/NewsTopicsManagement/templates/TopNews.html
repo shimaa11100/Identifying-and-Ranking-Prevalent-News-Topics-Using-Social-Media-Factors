@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	{% load static%}
+	<title>Top News</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+{% load static %}
+
+     <!--Default bootstrap style-->
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
+
+     <!--load css file to change background of website-->
+
+    <link rel="stylesheet" type="text/css" href="{% static 'NewsTopicsManagement/NewsTopic/css/util.css' %}">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'NewsTopicsManagement/NewsPage.css' %}"/>
+     <link rel="stylesheet" type="text/css" href="{% static 'NewsTopicsManagement/NewsTopic/css/main.css' %}">
+     <!--change fonts of words-->
+     <link href='https://fonts.googleapis.com/css?family=Satisfy' rel='stylesheet' type='text/css'>
+
+     <!--to make web page dynamic for example when resize web page the icons and all things resize too  -->
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<!--===============================================================================================-->
+
+<!--===============================================================================================-->
+</head>
+<body>
+   <nav class="navbar navbar-inverse">
+
+     <div class="container-fluid">
+
+        <!--header-->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#topNavBar">
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
+            </button>
+            <!--Logo-->
+            <a class="navbar-brand" href="{% url 'UserDataManagement:HomePage' %}">SociRank</a>
+        </div>
+
+        <!--Items-->
+        <div class="collapse navbar-collapse" id="topNavBar">
+
+            <ul class="nav navbar-nav">
+
+                <!--UserName-->
+                <li class="active">
+                    <a href="{% url 'NewsTopicsManagement:NewsPage' %}">
+                        <span class="glyphicon glyphicon-user" aria-hidden="true" ></span>&nbsp;
+                        Welcome {{UserName}}
+                    </a>
+                </li>
+
+                <!--History-->
+                <li class="NH">
+                    <a href="{% url 'NewsTopicsManagement:UserHistoryPage'%}">
+                        <span class="glyphicon glyphicon-list" aria-hidden="true" ></span>&nbsp;
+                        History
+                    </a>
+                </li>
+
+                 <!--Search section text and button-->
+                <form class="navbar-form navbar-left" role="search" method="post" action="{% url 'NewsTopicsManagement:Search'%}">
+                  {% csrf_token %}
+                    <div class="form-group">
+                      <input type="text" class="form-control" name="search_title" value="">
+                  </div>
+                  <button type="submit" class="btn btn-default">Search</button>
+                </form>
+
+            </ul>
+
+
+            <ul class="nav navbar-nav navbar-right">
+
+                <!--Recommended Topics-->
+                <li class="NH">
+                    <a href="{% url 'NewsTopicsManagement:LoadRecommendedTopics' %}">
+                        <span class="glyphicon glyphicon-star" aria-hidden="true" ></span>&nbsp;
+                        Recommended Topics
+                    </a>
+                </li>
+
+                <!--SignOut-->
+                <li class="NH">
+                    <a href="{% url 'NewsTopicsManagement:SignOut' %}">
+                        <span class="glyphicon glyphicon-off" aria-hidden="true" ></span>&nbsp;
+                        Signout
+                    </a>
+                </li>
+
+            </ul>
+
+        </div>
+
+     </div>
+   </nav>
+	<div class="limiter">
+		<div class="container-login100" style="background-image: url('{% static 'UserDataManagement/Login/images/bg-01.jpg'%}');">
+
+			<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54" style="overflow-y: scroll;height:500px ; width:800px">
+				<ul class="list-group">
+
+                 <form method="post">
+                    {% for news_article_of_topic in final_news %}
+                        {% for news_art in news_article_of_topic %}
+                            <div  class="list-group-item" style="overflow: hidden;word-break:break-all ;border: 1px solid #b725e0; margin-top: 20px;">
+                                <li>{{news_art}}</li>
+                            </div>
+					    {% endfor %}
+                    {% endfor %}
+                  </form>
+                </ul>
+
+			</div>
+		</div>
+	</div>
+</body>
+</html>

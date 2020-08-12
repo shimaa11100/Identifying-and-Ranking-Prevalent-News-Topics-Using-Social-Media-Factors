@@ -1,0 +1,25 @@
+
+body{
+background:white url("images/HomePage.jpg");
+background-size: cover;
+}
+
+.navbar{
+border-radius:0;
+}
+
+.navbar-brand{
+font-family:'Satisfy',cursive
+}
+
+h1{
+font-family:'Satisfy',cursive;
+padding-top:250px;
+padding-left:500px;
+width :50%;
+}
+
+.imag{
+background-size: cover;
+}
+
